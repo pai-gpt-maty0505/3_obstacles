@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<sdf version="1.9">
+  <model name="triangular_pyramid">
+    <!-- The mesh is centred vertically: pose z=0.06 puts its base on z=0. -->
+    <static>true</static>
+    <link name="triangular_pyramid_link">
+      <collision name="triangular_pyramid_collision">
+        <geometry><mesh><uri>meshes/triangular_pyramid.stl</uri></mesh></geometry>
+        <surface><friction><ode><mu>0.5</mu><mu2>0.5</mu2></ode></friction></surface>
+      </collision>
+      <visual name="triangular_pyramid_visual">
+        <geometry><mesh><uri>meshes/triangular_pyramid.stl</uri></mesh></geometry>
+        <material><ambient>0.76 0.30 0.70 1</ambient><diffuse>0.76 0.30 0.70 1</diffuse></material>
+      </visual>
+    </link>
+  </model>
+</sdf>

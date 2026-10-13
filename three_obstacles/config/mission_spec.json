@@ -1,0 +1,104 @@
+{
+  "schema_version": "three_obstacles_mission_spec/v1",
+  "project_code": "independent_three_obstacles_transport",
+  "coordinate_frame": {
+    "frame_id": "base_link",
+    "x_axis": "SO-101 forward",
+    "y_axis": "SO-101 left",
+    "z_axis": "up"
+  },
+  "physics": {
+    "gravity_m_s2": 9.81,
+    "payload_contact_mode": "dynamic_rigid_body_friction_only",
+    "gripper_pad_friction_coefficient": 0.5,
+    "forbidden_mechanisms": [
+      "fixed_joint_payload",
+      "forced_attach",
+      "object_following",
+      "teleportation",
+      "collision_disable",
+      "penetration",
+      "pass_through"
+    ]
+  },
+  "entities": {
+    "payload": {
+      "shape": "box",
+      "size_m": [0.03, 0.03, 0.04],
+      "mass_kg": 0.036,
+      "base_pose": {"x": 0.24, "y": -0.29, "z": 0.02, "yaw_deg": 0.0},
+      "xy_jitter_m": 0.002,
+      "yaw_jitter_deg": 0.0
+    },
+    "dish": {
+      "shape": "dish",
+      "outer_diameter_m": 0.06,
+      "depth_m": 0.01,
+      "base_pose": {"x": 0.24, "y": 0.34, "z": 0.0, "yaw_deg": 0.0},
+      "xy_jitter_m": 0.002,
+      "yaw_jitter_deg": 0.0
+    },
+    "cylinder": {
+      "shape": "cylinder",
+      "diameter_m": 0.08,
+      "height_m": 0.1,
+      "base_pose": {"x": 0.27, "y": 0.18, "z": 0.05, "yaw_deg": 0.0},
+      "xy_jitter_m": 0.003,
+      "yaw_jitter_deg": 2.0
+    },
+    "rectangular_prism": {
+      "shape": "box",
+      "size_m": [0.06, 0.06, 0.2],
+      "base_pose": {"x": 0.3, "y": 0.0, "z": 0.1, "yaw_deg": 0.0},
+      "xy_jitter_m": 0.003,
+      "yaw_jitter_deg": 2.0
+    },
+    "triangular_pyramid": {
+      "shape": "equilateral_triangular_pyramid",
+      "base_side_m": 0.1,
+      "height_m": 0.12,
+      "base_pose": {"x": 0.27, "y": -0.12, "z": 0.06, "yaw_deg": 0.0},
+      "xy_jitter_m": 0.003,
+      "yaw_jitter_deg": 2.0
+    }
+  },
+  "route": {
+    "payload_envelope_radius_m": 0.022,
+    "minimum_static_clearance_m": 0.015,
+    "carry_height_m": 0.18,
+    "gate_offsets_from_entity_m": {
+      "PYRAMID_OUTER": [-0.1, -0.13],
+      "RECTANGLE_FRONT": [-0.14, 0.0],
+      "CYLINDER_OUTER": [-0.07, 0.11]
+    },
+    "ordered_gate_ids": [
+      "PYRAMID_OUTER",
+      "RECTANGLE_FRONT",
+      "CYLINDER_OUTER",
+      "DISH_PLACE"
+    ],
+    "semantic_constraints": {
+      "PYRAMID_OUTER": "pass robot-right / outer side of triangular pyramid",
+      "RECTANGLE_FRONT": "pass robot-side / near side of tall rectangular prism",
+      "CYLINDER_OUTER": "pass robot-left / outer side of cylinder",
+      "DISH_PLACE": "place payload at dish center without obstacle collision"
+    }
+  },
+  "teacher": {
+    "planner": "OMPL RRTConnect",
+    "planning_group": "arm",
+    "online_replanning": false,
+    "trajectory_interpolation_hz": 20,
+    "required_checks": [
+      "planning_scene_state_validity",
+      "payload_envelope_clearance",
+      "route_gate_order",
+      "gazebo_dynamic_replay"
+    ]
+  },
+  "dataset": {
+    "target_splits": {"train": 0.75, "val": 0.125, "test": 0.125},
+    "candidate_status": "PENDING_OMPL",
+    "scene_resample_limit": 100
+  }
+}

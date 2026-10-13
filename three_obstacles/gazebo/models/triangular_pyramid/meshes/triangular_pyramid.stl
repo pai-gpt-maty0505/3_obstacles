@@ -1,0 +1,30 @@
+solid triangular_pyramid
+  facet normal 0 0 -1
+    outer loop
+      vertex 0.057735027 0 -0.06
+      vertex -0.028867513 0.05 -0.06
+      vertex -0.028867513 -0.05 -0.06
+    endloop
+  endfacet
+  facet normal 0.850420064 0 0.526104026
+    outer loop
+      vertex 0.057735027 0 -0.06
+      vertex 0 0 0.06
+      vertex -0.028867513 0.05 -0.06
+    endloop
+  endfacet
+  facet normal -0.425210032 0.736486284 0.526104026
+    outer loop
+      vertex -0.028867513 0.05 -0.06
+      vertex 0 0 0.06
+      vertex -0.028867513 -0.05 -0.06
+    endloop
+  endfacet
+  facet normal -0.425210032 -0.736486284 0.526104026
+    outer loop
+      vertex -0.028867513 -0.05 -0.06
+      vertex 0 0 0.06
+      vertex 0.057735027 0 -0.06
+    endloop
+  endfacet
+endsolid triangular_pyramid

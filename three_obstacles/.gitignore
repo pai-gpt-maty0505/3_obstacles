@@ -1,0 +1,9 @@
+# Generated teacher candidates and later data products are reproducible from seeds.
+__pycache__/
+*.py[cod]
+data/teacher_requests/*.jsonl
+data/teacher_request_shards/
+data/teacher_trajectories/
+data/lerobot/
+gazebo/generated_worlds/
+logs/

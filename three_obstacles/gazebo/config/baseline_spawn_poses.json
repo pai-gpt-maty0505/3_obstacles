@@ -1,0 +1,19 @@
+{
+  "schema_version": "three_obstacles_gazebo_baseline/v1",
+  "coordinate_frame": "base_link",
+  "pose_convention": "payload and obstacles use geometric centres; dish uses its ground-level centre",
+  "entities": {
+    "payload": {"model_uri": "model://payload", "pose": [0.24, -0.29, 0.02, 0.0, 0.0, 0.0], "dynamic": true},
+    "triangular_pyramid": {"model_uri": "model://triangular_pyramid", "pose": [0.27, -0.12, 0.06, 0.0, 0.0, 0.0], "dynamic": false},
+    "tall_rectangular_prism": {"model_uri": "model://tall_rectangular_prism", "pose": [0.30, 0.00, 0.10, 0.0, 0.0, 0.0], "dynamic": false},
+    "cylinder": {"model_uri": "model://cylinder", "pose": [0.27, 0.18, 0.05, 0.0, 0.0, 0.0], "dynamic": false},
+    "dish": {"model_uri": "model://dish", "pose": [0.24, 0.34, 0.0, 0.0, 0.0, 0.0], "dynamic": false}
+  },
+  "randomization": {
+    "payload_xy_m": 0.002,
+    "dish_xy_m": 0.002,
+    "obstacle_xy_m": 0.003,
+    "obstacle_yaw_deg": 2.0,
+    "dimensions_mass_and_friction_are_fixed": true
+  }
+}
